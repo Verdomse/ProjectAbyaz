@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raden Nur Muhammad Abyaz Fayyaza - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #f1f1f1;
+            background: #e60000;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(0, 0, 0, 0.8);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 20px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #f1f1f1;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #f1f1f1;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #ffc72c;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: #f1f1f1;
+            color: #e60000;
+            text-align: center;
+            padding: 150px 0 100px;
+            margin-top: 70px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero .tagline {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .hero .elevator-pitch {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #ffc72c;
+            color: #e60000;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        /* Sections */
+        .section {
+            padding: 80px 0;
+            background: #000;
+        }
+
+        .section:nth-child(even) {
+            background: #f1f1f1;
+        }
+
+        .section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #e60000;
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .profile-card {
+            background: #e60000;
+            color: white;
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .profile-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Image Gallery Styles */
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .image-gallery.single {
+            grid-template-columns: 1fr;
+            max-width: 400px;
+            margin: 1.5rem auto;
+        }
+
+        .image-gallery.double {
+            grid-template-columns: repeat(2, 1fr);
+            max-width: 600px;
+            margin: 1.5rem auto;
+        }
+
+        .image-gallery.quad {
+            grid-template-columns: repeat(2, 1fr);
+            max-width: 800px;
+            margin: 1.5rem auto;
+        }
+
+        .image-gallery.six-grid {
+            grid-template-columns: repeat(3, 1fr);
+            max-width: 900px;
+            margin: 1.5rem auto;
+        }
+
+        .image-item {
+            text-align: center;
+        }
+
+        .image-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .image-item img:hover {
+            transform: scale(1.05);
+        }
+
+        .image-caption {
+            font-size: 0.8rem;
+            color: #666;
+            margin-top: 0.5rem;
+            font-style: italic;
+            line-height: 1.4;
+        }
+
+        /* Profile Image */
+        .profile-image img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1rem;
+            border: 4px solid rgba(255,255,255,0.3);
+        }
+
+        /* Karakter & Kepribadian - Font Black */
+        .traits p, .trait-card h4, .trait-card ul li {
+            color: black;
+        }
+
+        .traits {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .trait-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .trait-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .trait-card h4 {
+            color: #e60000;
+            margin-bottom: 1rem;
+        }
+
+        /* USP Section */
+        .usp-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .usp-card {
+            background: #e60000;
+            color: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .usp-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Portfolio Section */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .portfolio-card-body p {
+            color: black;
+        }
+
+        .portfolio-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .portfolio-card-header {
+            background: #e60000;
+            color: white;
+            padding: 1.5rem;
+        }
+
+        .portfolio-card-body {
+            padding: 1.5rem;
+        }
+
+        .portfolio-card h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .portfolio-card .year {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: #000;
+            color: white;
+            text-align: center;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-link {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            padding: 15px 25px;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: background 0.3s ease;
+        }
+
+        .contact-link:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-links {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .image-gallery.quad, .image-gallery.six-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .image-gallery.double {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Mission Timeline */
+        .mission-timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .mission-item {
+            background: white;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .mission-item h4 {
+            color: #e60000;
+            margin-bottom: 1rem;
+        }
+
+        .mission-item ul {
+            list-style-position: inside;
+            color: #666;
+        }
+
+        .mission-item ul li {
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">Abyaz's Personal Portfolio</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#usp">Unique Selling Point</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>Raden Nur Muhammad Abyaz Fayyaza</h1>
+            <p class="tagline">"Tidak ada jalan pintas untuk menjadi orang sukses."</p>
+            <p class="elevator-pitch">
+                Saya adalah mahasiswa Teknik Sipil UGM yang tak pernah berhenti belajar, berinovasi, dan berkolaborasi. 
+                Dengan keberanian dan ketekunan, saya memadukan keahlian negosiasi sponsorship, kecintaan pada musik-musik orkestra, 
+                dan semangat yang berkelanjutan untuk menciptakan proyek infrastruktur berdampak.
+            </p>
+            <a href="#about" class="cta-button">Kenali Saya Lebih Dalam</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2>About Me</h2>
+            
+            <!-- Profile Image -->
+            <div class="image-gallery single">
+                <div class="image-item">
+                    <img src="https://i.postimg.cc/xTxPj4C1/11-TSAKETERIMA.jpg" alt="Raden Nur Muhammad Abyaz Fayyaza">
+                </div>
+            </div>
+
+            <div class="about-grid">
+                <div class="profile-card">
+                    <h3 style="font-size: 1.2rem; margin-bottom: 1.5rem;">Raden Nur Muhammad Abyaz Fayyaza</h3>
+                    <div style="text-align: left;">
+                        <p><strong>Lahir:</strong> Yogyakarta, 14 Mei 2005</p>
+                        <p>Seorang Pejabat (Peranakan Jawa-Batak)</p>
+                        <p><strong>Pendidikan Terkini:</strong> Teknik Sipil Angkatan 2023. SIPIL? SOLID!</p>
+                        <p><strong>MBTI:</strong> ENFP-T</p>
+                        <p><strong>Status:</strong> Single &lt;3 tapi Penerima Beasiswa Tanoto TELADAN 2024</p>
+                    </div>
+                </div>
+                <div>
+                    <h3>Karakter & Kepribadian</h3>
+                    <div class="traits">
+                        <div class="trait-card">
+                            <h4>🌟 Ekstrovert & Adaptif</h4>
+                            <p>Saya sangat-sangat Ekstrovert, sebagai seorang yang memiliki MBTI ENFP-T (dengan 83% ekstrovert), saya mudah berbaur dengan tim yang berbeda-beda asalnya. Contoh:</p>
+                            <ul>
+                                <li>Saat menjadi Co-Fasilitator Pionir Kesatria 2024, saya beradaptasi dengan 30+ mahasiswa baru dari berbagai daerah, menggunakan bahasa Jawa medhok untuk yang berasal dari Jogja/Semarang/Solo dan sekitarnya dan aksen Medan untuk teman-teman Batak.</li>
+                                <li>Di GMCO, saya berkolaborasi dengan 140+ anggota dari jurusan yang berbeda-beda untuk menyelaraskan ritme musik sambil menjaga harmoni di organisasi GMCO-nya itu sendiri.</li>
+                            </ul>
+                        </div>
+                        <div class="trait-card">
+                            <h4>💪 Pantang Menyerah & Resilien</h4>
+                            <p>Saya memegang teguh prinsip "Failure is the best teacher". Contoh-contoh pengalaman saya:</p>
+                            <ul>
+                                <li>Pernah gagal jadi asisten dosen mata kuliah Gambar Bangunan Teknik Sipil di semester 3, ini mengajarkan pentingnya persiapan teknis. Saya bangkit dengan berlatih AutoCAD intensif dan akhirnya mendapat proyek dosen jembatan pedestrian Mrican sebagai drafter.</li>
+                                <li>Riwayat medis yang cukup ekstrim (kejang, patah tulang, operasi usus buntu) membentuk mental "tangguh seperti baja". Saat proyek panel surya UGM semester 4 ini, saya tetap menyelesaikan analisis struktur meski harus kerja sambil di-infus di rumah sakit.</li>
+                            </ul>
+                        </div>
+                        <div class="trait-card">
+                            <h4>😄 Humoris & Empatik</h4>
+                            <p>Saya percaya humor adalah "penghilang over-tension". Di divisi-divisi kepanitiaan yang saya ikuti, saya sering menyisipkan meme lucu di rapat-rapat, strategi ini berhasil mencairkan suasana dan meningkatkan mood anggota lainnya. Namun, saya selalu peka pada beban tim. Saat anggota mengalami stres saat menghadapi ujian, saya sering mengajak anggota tersebut untuk sesi curhat / nongkrong bareng sambil meredakan stress mereka.</p>
+                        </div>
+                        <div class="trait-card">
+                            <h4>🎯 Goal-Oriented & Kolaboratif</h4>
+                            <p>Kombinasi HIGH-5 Strategist (no.2) dan Peacekeeper (no.1) membuat saya fokus pada hasil tanpa mengabaikan harmoni. Seperti sekarang saya sebagai Kepala Departemen Fundraising GMCO, saya memimpin tim merancang merchandise, menjual food-and-beverages, dan sponsorship untuk GMCO, tapi tetap memastikan setiap anggota mendapat porsi kerja yang adil.</p>
+                        </div>
+                    </div>
+
+                    <h3>Minat & Hobi</h3>
+                    <div class="traits">
+                        <div class="trait-card">
+                            <h4>🎶 Musik</h4>
+                            <p>Sebagai seorang Drummer, saya terbiasa mengatur tempo 60+ lagu orkestra sejak masih di BMD Orchestra, Padmanaba Orchestra (padzchestra), dan di Gadjah Mada Chamber Orchestra (GMCO), dari musik klasik hingga modern. Pelajaran terbesar: "Seperti struktur dari sebuah jembatan, harmoni musik juga butuh presisi dan kerja sama yang baik."</p>
+                            <p>Selain di orkestra, saya juga ikut berbagai band sebagai drummer dan kadang vokalis.</p>
+                            
+                            <!-- Music Images -->
+                            <div class="image-gallery double">
+                                <div class="image-item">
+                                    <img src="https://i.postimg.cc/d08dCHqd/2Musik.jpg" alt="Abyaz bermain drum GMCO">
+                                    <div class="image-caption">Foto closeup saya sedang bermain drum di salah satu penampilan Gadjah Mada Chamber Orchestra</div>
+                                </div>
+                                <div class="image-item">
+                                    <img src="https://i.postimg.cc/rwR5Vy3f/image.jpg" alt="Abyaz di GMCO">
+                                    <div class="image-caption">Saya dibelakang sedang bermain drum di GMCO</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="trait-card">
+                            <h4>🏊 Olahraga</h4>
+                            <p>Saya senang mencoba banyak olahraga baru, sampai saat ini, saya sudah pernah mencoba bermain bola, basket, renang, golf, tennis, badminton, bowling, menyelam, berlari, bersepeda, dan masih banyak lagi. Namun olahraga yang paling kusuka adalah berenang. Selain telah diikuti les renang sejak TK untuk melatih pernapasan, dengan bisa berenang aku bisa mendapat skill bertahan hidup tambahan yang menurut saya diperlukan oleh semua manusia, yaitu kebisaan / kemampuan berenang. Pendapat saya ini muncul karena sejak masuk SMA, di SMA saya, orang yang tidak bisa berenang itu lebih banyak daripada yang bisa.</p>
+                            <p>Selain mengikuti kegiatan olahraga sebagai pemainnya, saya juga senang menonton tim-tim olahraga terutama di sepak bola. Saya merupakan fans berat Manchester United Football Club. Dapat dilihat juga dari tema online portofolio saya, warna nya terinspirasi dari Man UTD. Kesetiaan saya pada tim yang jarang menang ini melatih kesabaran saya. Saya tetap sabar menunggu kejayaan tim ini meski karirnya menurun sejak saya beranjak dewasa.</p>
+                            
+                            <!-- Sports Images -->
+                            <div class="image-gallery quad">
+                                <div class="image-item">
+                                    <img src="https://i.postimg.cc/XJLCHrBY/3Futsal.jpg" alt="Futsal bersama">
+                                    <div class="image-caption">Foto bersama setelah bermain futsal</div>
+                                </div>
+                                <div class="image-item">
+                                    <img src="https://i.postimg.cc/C1S8sG12/3Renang.jpg" alt="Berenang bersama">
+                                    <div class="image-caption">Foto bersama setelah berenang</div>
+                                </div>
+                                <div class="image-item">
+                                    <img src="https://i.postimg.cc/1trpkW2P/3Golf.jpg" alt="Bermain golf">
+                                    <div class="image-caption">Foto saya mencoba olahraga baru, golf</div>
+                                </div>
+                                <div class="image-item">
+                                    <img src="https://i.postimg.cc/Bv1pVBJQ/3Tennis.jpg" alt="Tennis bersama">
+                                    <div class="image-caption">Foto bersama setelah tennis</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="trait-card">
+                            <h4>🌱 Teknologi & Sustainability</h4>
+                            <p>SDGs: Sejak Ritsumeikan Global Summit 2019, saya terobsesi pada konsep smart city. Di proyek panel surya UGM ini, saya sangat senang karena UGM mulai menerapkan panel surya sebagai sumber energi di 10 gedungnya.</p>
+                            <p>Perangkat Lunak Teknik Sipil: Menguasai AutoCAD, SketchUp, QGIS, Revit, SAP2000, dan sedang belajar Civil3D untuk menambah keahlian dalam memproyeksikan bangunan-bangunan Teknik Sipil.</p>
+                            
+                            <!-- Technology & Sustainability Image -->
+                            <div class="image-gallery single">
+                                <div class="image-item">
+                                    <img src="https://i.postimg.cc/26DQXpH2/4RGS.jpg" alt="Ritsumeikan Global Summit 2019">
+                                    <div class="image-caption">Foto bersama seluruh peserta Ritsumeikan Global Summit 2019</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Unique Selling Point Section -->
+    <section id="usp" class="section">
+        <div class="container">
+            <h2>My Unique Selling Point</h2>
+            <div class="usp-grid">
+                <!-- Ahli Sponsorship -->
+                <div class="usp-card">
+                    <h3>🤝 Ahli Sponsorship</h3>
+                    <p>Pengalaman 3 tahun di divisi sponsorship di beberapa event yang berbeda (Cultfestco, PPHP, PTTA, Pentas Besar Jubah Macan, Pesta Rakyat Teknik, Lustrum KMTSL, dan di Civil In Action) mengajarkan saya:</p>
+                    <ul>
+                        <li>Bagaimana cara berkomunikasi dan bernegosiasi dengan baik ke petinggi-petinggi perusahaan seputar kontraprestasi yang ditawarkan. Dengan semakin sering saya bertemu orang-orang penting perusahaan, saya jadi semakin terbiasa untuk berbicara formal dan memperkuat mental ketika event / kegiatan nya di rendahkan.</li>
+                        <li>Selain itu saya juga belajar apa itu kesabaran. Tidak jarang suatu perusahaan meng-hold pembayaran dan bahkan menolak. Hal ini membuat saya semakin terlatih untuk sabar menghadapi sesuatu dan kerap bekerja di bawah tekanan atasan atas dana yang belum cair dari perusahaan tertentu.</li>
+                    </ul>
+                    
+                    <!-- Sponsorship Image -->
+                    <div class="image-gallery single">
+                        <div class="image-item">
+                            <img src="https://i.postimg.cc/tT35XR1K/5Sponsor.jpg" alt="Bersama petinggi BRIN">
+                            <div class="image-caption">Foto bersama rekan-rekan sponsorship dengan salah satu petinggi BRIN</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Multidisiplin & Multitalenta -->
+                <div class="usp-card">
+                    <h3>🎵 Multidisiplin & Multitalenta</h3>
+                    <p>Tidak hanya memiliki bakat dan ketekunan di drum, saya juga bisa bernyanyi serta bermain gitar, kedua bakat musik ini juga sering saya tampilkan di penampilan-penampilan seperti Solo Vocal, Vocal Group, Choir, Guitar Quartet, dan lainnya. Selain itu:</p>
+                    <ul>
+                        <li>Saya juga senang mempelajari banyak bahasa, sampai saat ini saya fasih bicara dalam Bahasa Indonesia, Bahasa Inggris, dan Bahasa Jawa, dan sedikit Bahasa Jepang. Hal ini membantu saya untuk mudah akrab dengan orang baru, semisal bertemu orang yang sering berbahasa inggris dan jarang berbahasa indonesia namun ia adalah orang indonesia, saya kerap menyesuaikan diri untuk berbicara dalam bahasa inggris agar lawan bicara saya lebih santai/terbuka terhadap saya.</li>
+                        <li>Saya juga sering mencoba-coba dan mempelajari hal-hal baru dari segi perangkat lunak Teknik Sipil. Aplikasi-aplikasi biasa seperti MS Word, MS Excel, dan MS Powerpoint sudah saya kuasai sejak SMA, namun di kuliah ini ada semakin banyak aplikasi terutama perangkat lunak Teknik Sipil seperti AutoCAD, SAP2000, Revit, QGIS, SketchUp, CIVIL3D, dan masih banyak lagi yang ingin saya pelajari dan kuasai.</li>
+                    </ul>
+                    
+                    <!-- Multitalenta Image -->
+                    <div class="image-gallery single">
+                        <div class="image-item">
+                            <img src="https://i.postimg.cc/tJRhp3G6/6Nyanyi.jpg" alt="Solo vokal Teknisiade">
+                            <div class="image-caption">Saya mewakili KMTSL dalam cabang seni solo vokal di Teknisiade 2024</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Resiliensi -->
+                <div class="usp-card">
+                    <h3>🔄 Resiliensi Luar Biasa</h3>
+                    <p>"Kita Semua Boleh Jatuh Tapi Harus Bangkit Kembali" - Contoh pengalaman saya:</p>
+                    <ul>
+                        <li>Patah Tulang Kaki (2015): Kecelakaan ini mengakibatkan saya harus vakum dulu dari bermain drum, sangat disayangkan namun dengan patah tulang ini saya jadi semakin sering berenang untuk memulihkan kaki, dan malah menambah skill bermusik baru yaitu gitar.</li>
+                        <li>Rawat Inap Pertengahan Semester 4 (2025): Opname saya kali ini saya lakukan sambil menyambi pekerjaan-pekerjaan seperti designing SAP2000 untuk proyek atap panel surya, dan rapat-rapat online Sponsorship agar tetap stay on timeline pekerjaan.</li>
+                    </ul>
+                    
+                    <!-- Resiliensi Image -->
+                    <div class="image-gallery single">
+                        <div class="image-item">
+                            <img src="https://i.postimg.cc/y6nmnb0y/7SAKIT.jpg" alt="Di IGD">
+                            <div class="image-caption">Foto saya kekurangan oksigen dan terbaring di IGD</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Jaringan Global dengan Kearifan Lokal -->
+                <div class="usp-card">
+                    <h3>🌍 Jaringan Global dengan Kearifan Lokal</h3>
+                    <p>Pengalaman saya dalam program internasional:</p>
+                    <ul>
+                        <li>Ritsumeikan Global Summit (2019) dan Upcycle APU (2020): Pengalaman saya tinggal di Jepang selama 8 hari untuk program RGS (2019) membuat saya semakin terbuka dengan kemajuan Jepang dalam mengolah sampah. Hal ini saya coba implementasikan di perlombaan proposal di program Upcycle APU di tahun selanjutnya. Dan alhamdulillah-nya saya dan tim dari SMA berhasil memenangkan lomba proposal tersebut dan langsung mengimplementasikan pengolahan dan pemilahan sampah di SMA saya.</li>
+                        <li>INSPIRASI-NTU (2025): Rencana saya kedepannya ketika mengikuti program INSPIRASI, selain mengikuti seminar seputar Sustainable Cities, saya juga akan mengambil inspirasi seputar smart traffic system di Singapura dan akan menjadikannya sebuah skripsi kuliah jika diimplementasikan di Yogyakarta / Indonesia apakah akan compatible atau tidak.</li>
+                    </ul>
+                    
+                    <!-- Global Network Image -->
+                    <div class="image-gallery single">
+                        <div class="image-item">
+                            <img src="https://i.postimg.cc/gjKNKcmV/8-RGSdaerah.jpg" alt="Bersama Jayden dari Hawaii">
+                            <div class="image-caption">Foto saya bersama Jayden, perwakilan siswa SMP dari Hawaii, USA, dengan menggunakan baju adat masing-masing</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Statement Section -->
+    <section class="section">
+        <div class="container">
+            <h2>Mission Statement</h2>
+            <p style="text-align: center; font-size: 1.2rem; margin-bottom: 3rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+                "Sebagai sosok ekstrovert dan adaptif, saya berkomitmen untuk memimpin dan membimbing tim dalam mengimplementasikan 
+                solusi infrastruktur berkelanjutan. Dalam setiap langkah, saya memanfaatkan keahlian teknik sipil, jaringan sponsorship, 
+                dan passion seni saya untuk merancang serta mengawasi proyek-proyek yang memberdayakan komunitas lokal."
+            </p>
+
+            <div class="mission-timeline">
+                <!-- Short-Term (1–2 tahun) -->
+                <div class="mission-item">
+                    <h4>🎯 Short-Term (1–2 tahun)</h4>
+                    <ul>
+                        <li>Bergabung di Komisi Pengawasan MPM KMTSL FT UGM untuk merancang dan menerapkan kerangka audit serta evaluasi event-event infrastruktur mahasiswa, memastikan setiap kegiatan memenuhi standar keselamatan dan keberlanjutan.</li>
+                        <li>Menyelesaikan proyek panel surya di sepuluh Learning Centre UGM sebagai Surveyor dan Analyst, memimpin survei lokasi, analisis struktural, dan koordinasi tim lapangan sehingga rancangan pemasangan panel optimal untuk mengurangi konsumsi energi.</li>
+                        <li>Menggunakan sifat pantang menyerah untuk terus beradaptasi dalam menghadapi tantangan teknis dan medis, memastikan kualitas desain infrastruktur hijau tetap terjaga meski kondisi eksternal berubah.</li>
+                    </ul>
+                </div>
+
+                <!-- Mid-Term (3–5 tahun) -->
+                <div class="mission-item">
+                    <h4>🚀 Mid-Term (3–5 tahun)</h4>
+                    <ul>
+                        <li>Memimpin inisiatif "Green Infrastructure Lab" di UGM, merancang studi dan prototipe solusi ramah lingkungan (seperti drainase anti-banjir dan penggunaan material daur ulang), bekerja sama dengan dosen, mahasiswa, dan sponsor untuk menguji coba di skala laboratorium dan lapangan.</li>
+                        <li>Mengkolaborasi dengan sponsor korporat untuk mendanai pilot project infrastruktur di desa mitra melalui Event Srawung Desa, memanfaatkan jaringan fundraising dan kemampuan negosiasi untuk memastikan kelancaran pendanaan, pengadaan material, serta keterlibatan komunitas lokal dalam proses pembangunan.</li>
+                        <li>Mengintegrasikan pendekatan humoris dan empatik dalam membimbing tim lapangan, menciptakan suasana kerja yang inklusif dan memotivasi relawan atau peserta desa untuk berpartisipasi aktif.</li>
+                    </ul>
+                </div>
+
+                <!-- Long-Term (5+ tahun) -->
+                <div class="mission-item">
+                    <h4>🌟 Long-Term (5+ tahun)</h4>
+                    <ul>
+                        <li>Mendirikan firma konsultan teknik sipil yang berfokus pada proyek sustainable infrastructure di Indonesia, menyediakan layanan perencanaan, perancangan, dan evaluasi pembangunan hijau untuk sektor publik dan swasta.</li>
+                        <li>Mengajar dan mentoring generasi muda melalui program Lead-Self Tanoto serta workshop global di NTU, Ritsumeikan, dan APU, memanfaatkan kemampuan ekstrovert untuk menginspirasi dan membentuk pemimpin berdaya guna dalam bidang teknik berkelanjutan.</li>
+                        <li>Mengembangkan platform digital edukasi dan crowd-funding untuk proyek infrastruktur hijau, memperluas dampak sosial dengan melibatkan startup teknologi, investor, dan komunitas masyarakat dalam mempercepat adopsi praktik keberlanjutan secara nasional.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="section">
+        <div class="container">
+            <h2>Portfolio & Achievements</h2>
+            <div class="portfolio-grid">
+                <!-- Ritsumeikan Global Summit 2019 -->
+                <div class="portfolio-card">
+                    <div class="portfolio-card-header">
+                        <h3>Ritsumeikan Global Summit 2019 (Kyoto, Jepang)</h3>
+                        <div class="year">2019</div>
+                    </div>
+                    <div class="portfolio-card-body">
+                        <p>Sejak masih duduk di bangku SMP, saya telah merasakan betapa pentingnya membuka wawasan melalui pengalaman internasional. Pada tahun 2019, saya terpilih sebagai salah satu peserta Ritsumeikan Global Summit (RGS) di Kyoto, Jepang—sebuah kesempatan langka bagi seorang pelajar yang sebelumnya belum pernah menginjakkan kaki di luar negeri. Bersama dua teman sebaya, Atha dan Tenka, kami terbang dari Bali menuju Osaka. Saat tiba di Jepang, udara dingin musim dingin itu sempat membuat saya kaget. Saya sudah tahu bahwa musim dingin di sana dapat mencapai sepuluh derajat Celcius pada siang hari, sementara malam harinya bisa turun hingga suhu di bawah nol.</p>
+                        <p>Begitu keluar dari pesawat dan memasuki bandara Osaka, kami langsung dijemput bus dari Ritsumeikan High School untuk mengunjungi sebuah kuil di tengah kota Kyoto. Karena waktu sudah sore, kami berpisah dengan teman-teman dari negara lain dan masing-masing dijemput oleh host family. Host family saya adalah keluarga Deguchi. Anak laki-lakinya, Daisuke Deguchi, berusia sama dengan saya dan ia adalah sosok atletis dan aktif meski awalnya sedikit pemalu karena keterbatasan bahasa Inggris. Kami segera akrab karena saya bisa sedikit berbahasa Jepang dan menghafal lagu tema Doraemon yang membuatnya cukup terhibur.</p>
+                        <p>Selama di Jepang, akomodasi, transportasi, dan makanan disediakan oleh host family. Karena saya tidak bisa mengonsumsi babi, Tante Masako selalu memasak ayam, telur, dan daging sapi. Saya menikmati masakan Jepang yang cenderung asin dan gurih, cocok dengan lidah Jawa saya. Untuk ke Ritsumeikan High School, saya diantar Tante Masako ke stasiun terdekat lalu naik kereta ke sekolah. Begitu tiba di hari pertama sekolah, seragam siswa Jepang yang persis seperti di anime membuat saya terkesima. Lapangan baseball yang luas di depan sekolah sekaligus menjadi lapangan sepak bola, dengan lapangan tenis di sampingnya, menambah kekaguman saya.</p>
+                        <p>Kami segera mengikuti orientasi siswa di aula besar, bertemu teman-teman dari Indonesia, lalu berpisah untuk bergabung dalam kelas internasional. Di kelas tersebut, saya berdiskusi mengenai topik Sustainable Development Goals bersama Jayden dari Hawai, Fauzi dari Yordania, Jeanne dari Perancis, dan teman-teman lain. Saya terkejut melihat perbedaan postur tubuh mereka yang rata-rata lebih tinggi. Diskusi ini berlangsung selama tiga hari pertama, kemudian di hari keempat kami melakukan field trip ke hutan bambu di Kyoto sebelum menyantap udon tradisional.</p>
+                        <p>Pada hari kelima, kami mengadakan pameran budaya dari masing-masing negara dan kemudian tampil di panggung. Saya, Atha, Tenka, dan guru pendamping kami dari Indonesia, Ms. Martin, memamerkan gasing Jawa, angklung, lukisan batik, serta kostum tari tradisional. Ketika tiba giliran saya tampil, jarik tari saya sempat terlepas, tetapi untungnya saya mengenakan celana panjang kain di bawahnya sehingga pertunjukan tetap berjalan lancar. Setelah penampilan, kami merayakan kesuksesan di panggung dan berfoto bersama teman-teman internasional.</p>
+                        <p>Keesokan harinya, ayah dari Daisuke mengajak saya berkeliling Kyoto, mengunjungi Kinkakuji dan Toei Park, yang memanjakan hati saya sebagai penggemar seri Kamen Rider, One Piece, dan Dragon Ball yang diproduksi oleh Toei. Pada akhirnya, kami berpisah dan kembali ke negara masing-masing dengan kenangan yang tak terlupakan.</p>
+                        
+                        <!-- RGS Images -->
+                        <div class="image-gallery quad">
+                            <div class="image-item">
+                                <img src="https://i.postimg.cc/kgHwsp3p/9-RGSDaisuke.jpg" alt="Bersama Daisuke di Kinkakuji">
+                                <div class="image-caption">Foto bersama host-brother, Daisuke Deguchi, di Kinkakuji</div>
+                            </div>
+                            <div class="image-item">
+                                <img src="https://i.postimg.cc/26DQXpH2/4RGS.jpg" alt="Seluruh peserta RGS">
+                                <div class="image-caption">Foto bersama keseluruhan peserta Ritsumeikan Global Summit 2019</div>
+                            </div>
+                            <div class="image-item">
+                                <img src="https://i.postimg.cc/L6NxYsyR/9-RGShalfteam.jpg" alt="Teman sekelompok internasional">
+                                <div class="image-caption">Foto bersama teman sekelompok yang berasal dari berbagai negara</div>
+                            </div>
+                            <div class="image-item">
+                                <img src="https://i.postimg.cc/jS2Zzr9f/9RGSteam.jpg" alt="Perwakilan Indonesia">
+                                <div class="image-caption">Foto bersama perwakilan dari SMP Budi Mulia Dua, Indonesia. Dari kiri : Saya, Atha, Ms. Martin, dan Tenka</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- APU Upcycle Mentoring Program 2020 -->
+                <div class="portfolio-card">
+                    <div class="portfolio-card-header">
+                        <h3>APU Upcycle Mentoring Program 2020 (Online, Yogyakarta)</h3>
+                        <div class="year">2020</div>
+                    </div>
+                    <div class="portfolio-card-body">
+                        <p>Ketika memasuki masa SMA, saya kembali terdorong untuk terlibat dalam program global. Berkat kedekatan dengan guru Bahasa Inggris, saya dan beberapa teman (Zea, Zidan, Osa, dan Velin) diterima dalam Upcycle Mentoring Program yang diselenggarakan oleh APU di Jepang. Selama empat hingga lima bulan, setiap Minggu pagi kami berpartisipasi dalam sesi Zoom yang membahas tantangan pengelolaan sampah. Bersama mentor dari Indonesia dan India, kami merancang berbagai solusi kreatif. Pada akhirnya, kami meraih kemenangan dalam lomba proposal inovasi lingkungan, membuat prototipe tempat sampah tematik yang memudahkan pemilahan sampah organik, anorganik, dan material daur ulang. Implementasi langsung di sekolah SMA Negeri 3 Yogyakarta menunjukkan hasil positif, karena siswa mulai terbiasa memilah sampah dengan benar. Dari pengalaman ini, saya menyadari bahwa solusi berkelanjutan harus mempertimbangkan konteks budaya dan kebiasaan lokal.</p>
+                        
+                        <!-- APU Image -->
+                        <div class="image-gallery single">
+                            <div class="image-item">
+                                <img src="https://i.postimg.cc/zBZ7ZHfw/10Apu.png" alt="APU Zoom seminar">
+                                <div class="image-caption">Screenshoot zoom seminar APU Upcycle Mentoring Program 2020</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tanoto TELADAN 2024 -->
+                <div class="portfolio-card">
+                    <div class="portfolio-card-header">
+                        <h3>Tanoto TELADAN 2024</h3>
+                        <div class="year">2024</div>
+                    </div>
+                    <div class="portfolio-card-body">
+                        <p>Memasuki jenjang perkuliahan di Program Studi Teknik Sipil UGM, saya menyadari bahwa beasiswa bukan hanya tentang bantuan finansial, tetapi juga tentang pengembangan diri secara menyeluruh. Ketika saya diterima sebagai penerima Beasiswa Tanoto TELADAN 2024, saya langsung terlibat dalam rangkaian modul Discovering the Hero Within, di mana saya belajar menelusuri kekuatan bawaan dan mengidentifikasi nilai-nilai inti yang menjadi kompas hidup saya. Melalui latihan self-reflection, saya memetakan area yang perlu dikembangkan—misalnya mengelola kecemasan ketika presentasi—dan belajar bahwa kegagalan merupakan guru terbaik. Dari sana, saya menjadi lebih sadar mengapa saya mudah bergaul (berkat sifat ekstrovert saya), sekaligus memahami perlunya mengelola kegelisahan di depan audiens.</p>
+                        <p>Modul Character Strengths kemudian membantu saya secara sistematis mengevaluasi kekuatan pribadi—mulai dari kindness dan humor hingga kemampuan bekerja dalam tim. Menyadari bahwa kindness dan humor adalah kekuatan utama saya, saya sering membagikan lelucon ringan di rapat atau mendengarkan teman yang sedang stres, menerapkan strategi problem-based coping agar mood tim tetap terjaga. Lebih jauh, keterlibatan saya sebagai Staff Unity Initiative di TSA UGM melatih kemampuan saya untuk menciptakan event rundowns yang solid dan menjalin kekompakan antara anggota. Dalam berbagai program seperti TSA Farewell, TSA Halloween 2024, dan TSAgustusan 2024, saya tidak hanya mengurus logistik dan perlengkapan, tetapi juga ikut mengaduk semen dan menanamkan tiang titik kumpul saat Social Project 2024 di SD Pogung—pengalaman pertama saya langsung menerapkan teori teknik sipil untuk membangun struktur yang aman bagi anak-anak.</p>
+                        <p>Semua kegiatan ini semakin memperkuat kemampuan saya mengelola detail dan bekerja sama dalam tim multiguna. Sebagai Staff Material Division di Pay-It-Forward 2024 dan Staff Events Division di TSAdventure 2024, saya belajar mendengarkan aktif dan memfasilitasi brainstorming yang efektif, sehingga setiap anggota dapat berkontribusi ide secara maksimal. Pendekatan ini diaplikasikan kembali ketika saya memimpin proyek panel surya UGM—memastikan setiap suara di tim terwakili dan solusi yang dihasilkan berguna bagi komunitas. Berkat pelajaran-pelajaran dari Tanoto TELADAN dan pengalaman di TSA UGM, saya kini lebih siap memimpin tim di berbagai inisiatif keberlanjutan, memadukan empati, humor, dan semangat pantang menyerah dalam setiap aksi saya.</p>
+                        
+                        <!-- Tanoto Images -->
+                        <div class="image-gallery six-grid">
+                            <div class="image-item">
+                                <img src="https://i.postimg.cc/3JcgQ0Sy/11TSAUI.jpg" alt="Unity Initiative team">
+                                <div class="image-caption">Foto bersama seluruh anggota divisi Unity Initiative</div>
+                            </div>
+                            <div class="image-item">
+                                <img src="https://i.postimg.cc/CKykzTVS/11-Persiapan-Halloween.jpg" alt="Persiapan Halloween">
+                                <div class="image-caption">Foto bersama divisi Unity Initiative dalam rangka persiapan Halloween</div>
+                            </div>
+                            <div class="image-item">
+                                <img src="https://i.postimg.cc/L5mVhdLn/11-Tsa-At-Gelex.jpg" alt="TSA at Gelex">
+                                <div class="image-caption">Foto bersama setelah program kerja TSA at Gelex</div>
+                            </div>
+                            <div class="image-item">
+                                <img src="https://i.postimg.cc/J0K5kT5K/11-Tsadventure.jpg" alt="TSAdventure">
+                                <div class="image-caption">Foto bersama setelah program kerja TSAdventure</div>
+                            </div>
+                            <div class="image-item">
+                                <img src="https://i.postimg.cc/Gm4x4x8J/11-Tsa-Gustusan.jpg" alt="TSAgustusan">
+                                <div class="image-caption">Foto bersama divisi Unity Initiative setelah suksesnya program kerja TSAgustusan</div>
+                            </div>
+                            <div class="image-item">
+                                <img src="https://i.postimg.cc/T2c9Fwvm/11-Tsa-Teknik.jpg" alt="TSA UGM FT">
+                                <div class="image-caption">Foto bersama TSA UGM cabang Fakultas Teknik</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Proyek Dosen Teknik Sipil UGM 2024-2025 -->
+                <div class="portfolio-card">
+                    <div class="portfolio-card-header">
+                        <h3>Proyek Dosen Teknik Sipil UGM</h3>
+                        <div class="year">2024-2025</div>
+                    </div>
+                    <div class="portfolio-card-body">
+                        <p>Pada akhir tahun 2024 dan awal tahun 2025, saya terlibat dalam dua proyek dosen penting di Teknik Sipil UGM. Pertama, Proyek Jembatan Mrican di mana saya menjadi drafter dan asisten Mas Juan. Tugas saya mencakup pembuatan gambar struktur menggunakan AutoCAD dan SketchUp, bekerja lembur hingga larut malam untuk memenuhi tenggat waktu. Kedua, saya berperan sebagai Surveyor dan Analyst dalam UGM Learning Centre Solar Panel Project. Tanggung jawab utama saya adalah memetakan dan menghitung kapasitas atap sepuluh gedung Learning Centre untuk menopang panel surya. Menggunakan Microsoft Excel dan SAP2000, saya memastikan desain struktur aman dan efisien. Bahkan ketika saya harus beristirahat karena kondisi medis, saya tetap menyelesaikan analisis tersebut demi memastikan target keberlanjutan tercapai.</p>
+                        
+                        <!-- Project Image -->
+                        <div class="image-gallery single">
+                            <div class="image-item">
+                                <img src="https://i.postimg.cc/2y5BPCnF/12Proyek.jpg" alt="Mengukur panel surya">
+                                <div class="image-caption">Foto saya sedang mengukur panel surya di atas atap SGLC</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- INSPIRASI Summer 2025 -->
+                <div class="portfolio-card">
+                    <div class="portfolio-card-header">
+                        <h3>INSPIRASI - NTU Summer Programme 2025</h3>
+                        <div class="year">2025</div>
+                    </div>
+                    <div class="portfolio-card-body">
+                        <p>Baru-baru ini, saya berhasil diterima dalam INSPIRASI Summer 2025 di NTU Singapura. Program ini menyediakan pemahaman mendalam tentang Sustainable Cities dan teknologi energi terbarukan melalui pendekatan multidisiplin, riset, dan studi kasus nyata. Rangkaian acara mencakup seminar, campus tour, dan diskusi kelompok di NTU serta ITS Surabaya. Saya menantikan kesempatan berkolaborasi dengan mahasiswa global dan ahli dari berbagai negara, sekaligus membawa pengalaman ini kembali ke UGM untuk memperkuat inisiatif keberlanjutan di Indonesia.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Mari Berkolaborasi!</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem;">
+                Siap untuk menciptakan proyek infrastruktur berkelanjutan yang berdampak? Contact Me!
+            </p>
+            <div class="contact-links">
+                <a href="mailto:abyazraden@gmail.com" class="contact-link">📧 Email</a>
+                <a href="https://www.linkedin.com/in/RadenAbyaz" class="contact-link" target="_blank">💼 LinkedIn</a>
+                <a href="https://instagram.com/radenabyaz" class="contact-link" target="_blank">📸 Instagram</a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(0, 0, 0, 0.9)';
+            } else {
+                nav.style.background = 'rgba(0, 0, 0, 0.8)';
+            }
+        });
+
+        // Add fade-in animation to cards when they come into view
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.6s ease forwards';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards
+        document.querySelectorAll('.trait-card, .usp-card, .portfolio-card, .mission-item').forEach(card => {
+            card.style.opacity = '0';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
